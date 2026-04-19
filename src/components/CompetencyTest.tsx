@@ -8,7 +8,7 @@ export default function CompetencyTest({ progress, updateProgress }: { progress:
   const [currentQ, setCurrentQ] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
   const [showResult, setShowResult] = useState(false);
-  const [score, setScore] = useState(0);
+  const [answers, setAnswers] = useState<number[]>([]);
 
   const q = quizQuestions[currentQ];
   const isComplete = currentQ >= quizQuestions.length;
@@ -17,24 +17,51 @@ export default function CompetencyTest({ progress, updateProgress }: { progress:
     if (showResult) return;
     setSelected(idx);
     setShowResult(true);
-    if (idx === q.answer) {
-      setScore(s => s + 1);
-    }
   };
 
   const handleNext = () => {
+    const newAnswers = [...answers, selected!];
+    setAnswers(newAnswers);
     setSelected(null);
     setShowResult(false);
     
     if (currentQ === quizQuestions.length - 1) {
-      updateProgress({ ...progress, competencyScore: score + (selected === q.answer ? 1 : 0) });
+      let finalScore = 0;
+      const topicScores: Record<string, { correct: number, total: number }> = {};
+      
+      quizQuestions.forEach((question, i) => {
+        const isCorrect = newAnswers[i] === question.answer;
+        if (isCorrect) finalScore++;
+        
+        if (!topicScores[question.topic]) {
+          topicScores[question.topic] = { correct: 0, total: 0 };
+        }
+        topicScores[question.topic].total++;
+        if (isCorrect) {
+          topicScores[question.topic].correct++;
+        }
+      });
+      
+      updateProgress({ 
+        ...progress, 
+        competencyScore: finalScore,
+        topicScores
+      });
+    } else {
+      setCurrentQ(c => c + 1);
     }
-    setCurrentQ(c => c + 1);
   };
 
   if (isComplete || progress.competencyScore !== null) {
-    const finalScore = progress.competencyScore !== null ? progress.competencyScore : score;
+    const finalScore = progress.competencyScore !== null ? progress.competencyScore : answers.filter((a,i) => a === quizQuestions[i].answer).length;
     const percentage = Math.round((finalScore / quizQuestions.length) * 100);
+    
+    // Sort topics by weakest ratio
+    const topics = progress.topicScores ? Object.entries(progress.topicScores).map(([topic, stats]) => ({
+      topic,
+      ratio: stats.correct / stats.total
+    })).sort((a,b) => a.ratio - b.ratio) : [];
+
     return (
       <div className="max-w-2xl mx-auto py-8">
         <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="bg-gray-900/50 p-8 rounded-2xl border border-gray-800 text-center">
@@ -42,9 +69,34 @@ export default function CompetencyTest({ progress, updateProgress }: { progress:
             <span className="text-2xl font-bold text-indigo-400">{percentage}%</span>
           </div>
           <h2 className="text-xl font-semibold text-white mb-2">Assessment Completed</h2>
-          <p className="text-sm text-gray-400 mb-8">You scored {finalScore} out of {quizQuestions.length}. Based on this, we've updated your recommended course path.</p>
+          <p className="text-sm text-gray-400 mb-6">You scored {finalScore} out of {quizQuestions.length}.</p>
+          
+          {topics.length > 0 && (
+            <div className="mb-8 text-left bg-gray-950 p-5 rounded-xl border border-gray-800/50">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-4">Topic Breakdown</h3>
+              <div className="space-y-3">
+                {topics.map(t => (
+                  <div key={t.topic}>
+                    <div className="flex justify-between text-xs mb-1">
+                      <span className="text-gray-300">{t.topic}</span>
+                      <span className={t.ratio < 0.5 ? 'text-rose-400' : t.ratio < 1 ? 'text-amber-400' : 'text-emerald-400'}>
+                        {Math.round(t.ratio * 100)}%
+                      </span>
+                    </div>
+                    <div className="h-1.5 w-full bg-gray-800 rounded-full overflow-hidden">
+                      <div 
+                        className={`h-full rounded-full ${t.ratio < 0.5 ? 'bg-rose-500' : t.ratio < 1 ? 'bg-amber-500' : 'bg-emerald-500'}`} 
+                        style={{ width: `${t.ratio * 100}%` }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
           <button 
-            onClick={() => { setCurrentQ(0); setScore(0); updateProgress({ ...progress, competencyScore: null }); }} 
+            onClick={() => { setCurrentQ(0); setAnswers([]); updateProgress({ ...progress, competencyScore: null, topicScores: {} }); }} 
             className="px-6 py-2 bg-gray-800 hover:bg-gray-700 text-white rounded text-sm transition-colors border border-gray-700"
           >
             Retake Assessment
@@ -56,15 +108,19 @@ export default function CompetencyTest({ progress, updateProgress }: { progress:
 
   return (
     <div className="max-w-3xl mx-auto py-2">
-      <header className="border-b border-gray-800 pb-4 mb-8 flex justify-between items-end">
-        <div>
-          <h2 className="text-2xl font-semibold tracking-tight text-white mb-1">General AI Competency</h2>
-          <p className="text-sm text-gray-500">Question {currentQ + 1} of {quizQuestions.length}</p>
+      <header className="border-b border-gray-800 pb-4 mb-8">
+        <div className="flex justify-between items-end mb-4">
+          <div>
+            <h2 className="text-2xl font-semibold tracking-tight text-white mb-1">General AI Competency</h2>
+            <p className="text-sm text-indigo-400 font-medium">Session: {q.topic}</p>
+          </div>
+          <p className="text-sm text-gray-500 font-medium">Q {currentQ + 1} / {quizQuestions.length}</p>
         </div>
-        <div className="flex gap-2">
-          {quizQuestions.map((_, i) => (
-            <div key={i} className={`h-1.5 w-8 rounded-full ${i < currentQ ? 'bg-indigo-600' : i === currentQ ? 'bg-indigo-400 shadow-[0_0_8px_rgba(129,140,248,0.5)]' : 'bg-gray-800'}`} />
-          ))}
+        <div className="w-full h-1.5 bg-gray-800 rounded-full overflow-hidden">
+          <div 
+            className="h-full bg-indigo-500 transition-all duration-300 ease-out shadow-[0_0_8px_rgba(129,140,248,0.5)]" 
+            style={{ width: `${((currentQ) / quizQuestions.length) * 100}%` }}
+          />
         </div>
       </header>
 
