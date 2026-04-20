@@ -19,6 +19,15 @@ export default function CompetencyTest({ progress, updateProgress }: { progress:
     setShowResult(true);
   };
 
+  const handlePrevious = () => {
+    if (currentQ > 0) {
+      setCurrentQ(c => c - 1);
+      setSelected(null);
+      setShowResult(false);
+      setAnswers(prev => prev.slice(0, -1));
+    }
+  };
+
   const handleNext = () => {
     const newAnswers = [...answers, selected!];
     setAnswers(newAnswers);
@@ -170,14 +179,27 @@ export default function CompetencyTest({ progress, updateProgress }: { progress:
               <span className="text-[11px] font-bold text-indigo-400 uppercase tracking-wider block mb-2">Explanation</span>
               <p className="text-[13px] text-indigo-100/80 leading-relaxed">{q.explanation}</p>
             </div>
-            <div className="flex justify-end">
-              <button onClick={handleNext} className="flex items-center gap-2 bg-indigo-600 text-white px-5 py-2.5 rounded hover:bg-indigo-500 transition text-sm font-medium">
-                {currentQ === quizQuestions.length - 1 ? 'Finish Assessment' : 'Next Question'}
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </div>
           </motion.div>
         )}
+        
+        <div className="flex justify-between mt-6 pt-6 border-t border-gray-800">
+          <button 
+             onClick={handlePrevious} 
+             disabled={currentQ === 0}
+             className={`flex items-center gap-2 px-5 py-2.5 rounded transition text-sm font-medium ${currentQ === 0 ? 'bg-gray-800/20 text-gray-700 cursor-not-allowed' : 'bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white'}`}
+          >
+             Previous
+          </button>
+          
+          {showResult ? (
+            <button onClick={handleNext} className="flex items-center gap-2 bg-indigo-600 text-white px-5 py-2.5 rounded hover:bg-indigo-500 transition text-sm font-medium">
+              {currentQ === quizQuestions.length - 1 ? 'Finish Assessment' : 'Next Question'}
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          ) : (
+            <div />
+          )}
+        </div>
       </motion.div>
     </div>
   );
