@@ -15,6 +15,10 @@ export const claudeCourses = [
   { id: 'cl_crs3', title: 'Constitutional AI Paper', url: 'https://arxiv.org/abs/2212.08073', description: 'The foundational research paper describing how Claude is trained and aligned.' },
   { id: 'cl_crs4', title: 'Computer Use Reference Architecture', url: 'https://docs.anthropic.com/en/docs/build-with-claude/computer-use', description: 'How to deploy Claude inside an isolated container to let it use a virtual mouse and keyboard.' },
   { id: 'cl_crs5', title: 'Claude Vision Guide', url: 'https://docs.anthropic.com/en/docs/build-with-claude/vision', description: 'Best practices for multimodal inputs, resizing images, and extracting data from charts.' }
+,
+  { id: 'cl_crs6', title: 'Anthropic Cookbook (YouTube)', url: 'https://youtube.com/@Anthropic', description: 'Official video tutorials and code walkthroughs from the Anthropic developers on using the Claude API.' },
+  { id: 'cl_crs7', title: 'Prompt Engineering with Claude 3 (YouTube)', url: 'https://www.youtube.com/watch?v=T9aHN1Osguc', description: 'In-depth guide on formatting prompts, using XML tags, and preventing hallucinations.' }
+
 ];
 
 export const claudeExam = [
@@ -28,6 +32,487 @@ export const claudeExam = [
   { id: 'ce8', question: 'How do you specify the API version in a raw Anthropic REST API request?', options: ['In the URL path (e.g., /v1/messages)', 'Via the x-api-key header', 'Via the anthropic-version header (e.g., anthropic-version: 2023-06-01)', 'It is passed in the JSON body'], answer: 2, explanation: 'Anthropic requires the `anthropic-version` header to explicitly lock API contracts and avoid breaking changes.' },
   { id: 'ce9', question: 'When constructing an array of messages for the Claude API, what is a strict requirement?', options: ['It must start with an "assistant" message.', 'It must strictly alternate between "user" and "assistant" roles.', 'It must contain at least 3 messages.', 'It cannot contain images.'], answer: 1, explanation: 'The API enforces alternating turns. You cannot send two `user` messages sequentially without an `assistant` reply separating them.' },
   { id: 'ce10', question: 'What is "Prefilling" in the context of Claude?', options: ['Pre-loading the cache.', 'Supplying the leading text of the Assistant\'s response to force Claude to start its answer in a specific format (e.g., "{" for JSON).', 'Injecting the prompt twice.', 'Paying for tokens in advance.'], answer: 1, explanation: 'Prefilling the `assistant` role message allows you to force Claude to begin its response with a specific starting string or bracket.' }
+,
+  { 
+    id: 'ce${11 + i}', 
+    question: 'When implementing ${topics[i]} with the Claude API, what is the officially recommended best practice for enterprise stability?', 
+    options: [
+      'Avoid using this feature entirely as it is known to heavily degrade the stability and latency of the overarching architecture.', 
+      'Rely solely on the legacy parameters from previous models while ignoring the new documentation and updated API structures.', 
+      'Carefully structure the request payload to ensure distinct separation between user instructions and provided data contexts.', 
+      'Randomize the system configurations on each call to prevent the model from overfitting to a specific structural pattern.'
+    ], 
+    answer: 2, 
+    explanation: 'Anthropic emphasizes strictly structured requests and delineated contexts as the primary mechanism for maintaining high-reliability outputs across all Claude family models.' 
+  },
+  { 
+    id: 'ce${11 + i}', 
+    question: 'When implementing ${topics[i]} with the Claude API, what is the officially recommended best practice for enterprise stability?', 
+    options: [
+      'Avoid using this feature entirely as it is known to heavily degrade the stability and latency of the overarching architecture.', 
+      'Rely solely on the legacy parameters from previous models while ignoring the new documentation and updated API structures.', 
+      'Carefully structure the request payload to ensure distinct separation between user instructions and provided data contexts.', 
+      'Randomize the system configurations on each call to prevent the model from overfitting to a specific structural pattern.'
+    ], 
+    answer: 2, 
+    explanation: 'Anthropic emphasizes strictly structured requests and delineated contexts as the primary mechanism for maintaining high-reliability outputs across all Claude family models.' 
+  },
+  { 
+    id: 'ce${11 + i}', 
+    question: 'When implementing ${topics[i]} with the Claude API, what is the officially recommended best practice for enterprise stability?', 
+    options: [
+      'Avoid using this feature entirely as it is known to heavily degrade the stability and latency of the overarching architecture.', 
+      'Rely solely on the legacy parameters from previous models while ignoring the new documentation and updated API structures.', 
+      'Carefully structure the request payload to ensure distinct separation between user instructions and provided data contexts.', 
+      'Randomize the system configurations on each call to prevent the model from overfitting to a specific structural pattern.'
+    ], 
+    answer: 2, 
+    explanation: 'Anthropic emphasizes strictly structured requests and delineated contexts as the primary mechanism for maintaining high-reliability outputs across all Claude family models.' 
+  },
+  { 
+    id: 'ce${11 + i}', 
+    question: 'When implementing ${topics[i]} with the Claude API, what is the officially recommended best practice for enterprise stability?', 
+    options: [
+      'Avoid using this feature entirely as it is known to heavily degrade the stability and latency of the overarching architecture.', 
+      'Rely solely on the legacy parameters from previous models while ignoring the new documentation and updated API structures.', 
+      'Carefully structure the request payload to ensure distinct separation between user instructions and provided data contexts.', 
+      'Randomize the system configurations on each call to prevent the model from overfitting to a specific structural pattern.'
+    ], 
+    answer: 2, 
+    explanation: 'Anthropic emphasizes strictly structured requests and delineated contexts as the primary mechanism for maintaining high-reliability outputs across all Claude family models.' 
+  },
+  { 
+    id: 'ce${11 + i}', 
+    question: 'When implementing ${topics[i]} with the Claude API, what is the officially recommended best practice for enterprise stability?', 
+    options: [
+      'Avoid using this feature entirely as it is known to heavily degrade the stability and latency of the overarching architecture.', 
+      'Rely solely on the legacy parameters from previous models while ignoring the new documentation and updated API structures.', 
+      'Carefully structure the request payload to ensure distinct separation between user instructions and provided data contexts.', 
+      'Randomize the system configurations on each call to prevent the model from overfitting to a specific structural pattern.'
+    ], 
+    answer: 2, 
+    explanation: 'Anthropic emphasizes strictly structured requests and delineated contexts as the primary mechanism for maintaining high-reliability outputs across all Claude family models.' 
+  },
+  { 
+    id: 'ce${11 + i}', 
+    question: 'When implementing ${topics[i]} with the Claude API, what is the officially recommended best practice for enterprise stability?', 
+    options: [
+      'Avoid using this feature entirely as it is known to heavily degrade the stability and latency of the overarching architecture.', 
+      'Rely solely on the legacy parameters from previous models while ignoring the new documentation and updated API structures.', 
+      'Carefully structure the request payload to ensure distinct separation between user instructions and provided data contexts.', 
+      'Randomize the system configurations on each call to prevent the model from overfitting to a specific structural pattern.'
+    ], 
+    answer: 2, 
+    explanation: 'Anthropic emphasizes strictly structured requests and delineated contexts as the primary mechanism for maintaining high-reliability outputs across all Claude family models.' 
+  },
+  { 
+    id: 'ce${11 + i}', 
+    question: 'When implementing ${topics[i]} with the Claude API, what is the officially recommended best practice for enterprise stability?', 
+    options: [
+      'Avoid using this feature entirely as it is known to heavily degrade the stability and latency of the overarching architecture.', 
+      'Rely solely on the legacy parameters from previous models while ignoring the new documentation and updated API structures.', 
+      'Carefully structure the request payload to ensure distinct separation between user instructions and provided data contexts.', 
+      'Randomize the system configurations on each call to prevent the model from overfitting to a specific structural pattern.'
+    ], 
+    answer: 2, 
+    explanation: 'Anthropic emphasizes strictly structured requests and delineated contexts as the primary mechanism for maintaining high-reliability outputs across all Claude family models.' 
+  },
+  { 
+    id: 'ce${11 + i}', 
+    question: 'When implementing ${topics[i]} with the Claude API, what is the officially recommended best practice for enterprise stability?', 
+    options: [
+      'Avoid using this feature entirely as it is known to heavily degrade the stability and latency of the overarching architecture.', 
+      'Rely solely on the legacy parameters from previous models while ignoring the new documentation and updated API structures.', 
+      'Carefully structure the request payload to ensure distinct separation between user instructions and provided data contexts.', 
+      'Randomize the system configurations on each call to prevent the model from overfitting to a specific structural pattern.'
+    ], 
+    answer: 2, 
+    explanation: 'Anthropic emphasizes strictly structured requests and delineated contexts as the primary mechanism for maintaining high-reliability outputs across all Claude family models.' 
+  },
+  { 
+    id: 'ce${11 + i}', 
+    question: 'When implementing ${topics[i]} with the Claude API, what is the officially recommended best practice for enterprise stability?', 
+    options: [
+      'Avoid using this feature entirely as it is known to heavily degrade the stability and latency of the overarching architecture.', 
+      'Rely solely on the legacy parameters from previous models while ignoring the new documentation and updated API structures.', 
+      'Carefully structure the request payload to ensure distinct separation between user instructions and provided data contexts.', 
+      'Randomize the system configurations on each call to prevent the model from overfitting to a specific structural pattern.'
+    ], 
+    answer: 2, 
+    explanation: 'Anthropic emphasizes strictly structured requests and delineated contexts as the primary mechanism for maintaining high-reliability outputs across all Claude family models.' 
+  },
+  { 
+    id: 'ce${11 + i}', 
+    question: 'When implementing ${topics[i]} with the Claude API, what is the officially recommended best practice for enterprise stability?', 
+    options: [
+      'Avoid using this feature entirely as it is known to heavily degrade the stability and latency of the overarching architecture.', 
+      'Rely solely on the legacy parameters from previous models while ignoring the new documentation and updated API structures.', 
+      'Carefully structure the request payload to ensure distinct separation between user instructions and provided data contexts.', 
+      'Randomize the system configurations on each call to prevent the model from overfitting to a specific structural pattern.'
+    ], 
+    answer: 2, 
+    explanation: 'Anthropic emphasizes strictly structured requests and delineated contexts as the primary mechanism for maintaining high-reliability outputs across all Claude family models.' 
+  },
+  { 
+    id: 'ce${11 + i}', 
+    question: 'When implementing ${topics[i]} with the Claude API, what is the officially recommended best practice for enterprise stability?', 
+    options: [
+      'Avoid using this feature entirely as it is known to heavily degrade the stability and latency of the overarching architecture.', 
+      'Rely solely on the legacy parameters from previous models while ignoring the new documentation and updated API structures.', 
+      'Carefully structure the request payload to ensure distinct separation between user instructions and provided data contexts.', 
+      'Randomize the system configurations on each call to prevent the model from overfitting to a specific structural pattern.'
+    ], 
+    answer: 2, 
+    explanation: 'Anthropic emphasizes strictly structured requests and delineated contexts as the primary mechanism for maintaining high-reliability outputs across all Claude family models.' 
+  },
+  { 
+    id: 'ce${11 + i}', 
+    question: 'When implementing ${topics[i]} with the Claude API, what is the officially recommended best practice for enterprise stability?', 
+    options: [
+      'Avoid using this feature entirely as it is known to heavily degrade the stability and latency of the overarching architecture.', 
+      'Rely solely on the legacy parameters from previous models while ignoring the new documentation and updated API structures.', 
+      'Carefully structure the request payload to ensure distinct separation between user instructions and provided data contexts.', 
+      'Randomize the system configurations on each call to prevent the model from overfitting to a specific structural pattern.'
+    ], 
+    answer: 2, 
+    explanation: 'Anthropic emphasizes strictly structured requests and delineated contexts as the primary mechanism for maintaining high-reliability outputs across all Claude family models.' 
+  },
+  { 
+    id: 'ce${11 + i}', 
+    question: 'When implementing ${topics[i]} with the Claude API, what is the officially recommended best practice for enterprise stability?', 
+    options: [
+      'Avoid using this feature entirely as it is known to heavily degrade the stability and latency of the overarching architecture.', 
+      'Rely solely on the legacy parameters from previous models while ignoring the new documentation and updated API structures.', 
+      'Carefully structure the request payload to ensure distinct separation between user instructions and provided data contexts.', 
+      'Randomize the system configurations on each call to prevent the model from overfitting to a specific structural pattern.'
+    ], 
+    answer: 2, 
+    explanation: 'Anthropic emphasizes strictly structured requests and delineated contexts as the primary mechanism for maintaining high-reliability outputs across all Claude family models.' 
+  },
+  { 
+    id: 'ce${11 + i}', 
+    question: 'When implementing ${topics[i]} with the Claude API, what is the officially recommended best practice for enterprise stability?', 
+    options: [
+      'Avoid using this feature entirely as it is known to heavily degrade the stability and latency of the overarching architecture.', 
+      'Rely solely on the legacy parameters from previous models while ignoring the new documentation and updated API structures.', 
+      'Carefully structure the request payload to ensure distinct separation between user instructions and provided data contexts.', 
+      'Randomize the system configurations on each call to prevent the model from overfitting to a specific structural pattern.'
+    ], 
+    answer: 2, 
+    explanation: 'Anthropic emphasizes strictly structured requests and delineated contexts as the primary mechanism for maintaining high-reliability outputs across all Claude family models.' 
+  },
+  { 
+    id: 'ce${11 + i}', 
+    question: 'When implementing ${topics[i]} with the Claude API, what is the officially recommended best practice for enterprise stability?', 
+    options: [
+      'Avoid using this feature entirely as it is known to heavily degrade the stability and latency of the overarching architecture.', 
+      'Rely solely on the legacy parameters from previous models while ignoring the new documentation and updated API structures.', 
+      'Carefully structure the request payload to ensure distinct separation between user instructions and provided data contexts.', 
+      'Randomize the system configurations on each call to prevent the model from overfitting to a specific structural pattern.'
+    ], 
+    answer: 2, 
+    explanation: 'Anthropic emphasizes strictly structured requests and delineated contexts as the primary mechanism for maintaining high-reliability outputs across all Claude family models.' 
+  },
+  { 
+    id: 'ce${11 + i}', 
+    question: 'When implementing ${topics[i]} with the Claude API, what is the officially recommended best practice for enterprise stability?', 
+    options: [
+      'Avoid using this feature entirely as it is known to heavily degrade the stability and latency of the overarching architecture.', 
+      'Rely solely on the legacy parameters from previous models while ignoring the new documentation and updated API structures.', 
+      'Carefully structure the request payload to ensure distinct separation between user instructions and provided data contexts.', 
+      'Randomize the system configurations on each call to prevent the model from overfitting to a specific structural pattern.'
+    ], 
+    answer: 2, 
+    explanation: 'Anthropic emphasizes strictly structured requests and delineated contexts as the primary mechanism for maintaining high-reliability outputs across all Claude family models.' 
+  },
+  { 
+    id: 'ce${11 + i}', 
+    question: 'When implementing ${topics[i]} with the Claude API, what is the officially recommended best practice for enterprise stability?', 
+    options: [
+      'Avoid using this feature entirely as it is known to heavily degrade the stability and latency of the overarching architecture.', 
+      'Rely solely on the legacy parameters from previous models while ignoring the new documentation and updated API structures.', 
+      'Carefully structure the request payload to ensure distinct separation between user instructions and provided data contexts.', 
+      'Randomize the system configurations on each call to prevent the model from overfitting to a specific structural pattern.'
+    ], 
+    answer: 2, 
+    explanation: 'Anthropic emphasizes strictly structured requests and delineated contexts as the primary mechanism for maintaining high-reliability outputs across all Claude family models.' 
+  },
+  { 
+    id: 'ce${11 + i}', 
+    question: 'When implementing ${topics[i]} with the Claude API, what is the officially recommended best practice for enterprise stability?', 
+    options: [
+      'Avoid using this feature entirely as it is known to heavily degrade the stability and latency of the overarching architecture.', 
+      'Rely solely on the legacy parameters from previous models while ignoring the new documentation and updated API structures.', 
+      'Carefully structure the request payload to ensure distinct separation between user instructions and provided data contexts.', 
+      'Randomize the system configurations on each call to prevent the model from overfitting to a specific structural pattern.'
+    ], 
+    answer: 2, 
+    explanation: 'Anthropic emphasizes strictly structured requests and delineated contexts as the primary mechanism for maintaining high-reliability outputs across all Claude family models.' 
+  },
+  { 
+    id: 'ce${11 + i}', 
+    question: 'When implementing ${topics[i]} with the Claude API, what is the officially recommended best practice for enterprise stability?', 
+    options: [
+      'Avoid using this feature entirely as it is known to heavily degrade the stability and latency of the overarching architecture.', 
+      'Rely solely on the legacy parameters from previous models while ignoring the new documentation and updated API structures.', 
+      'Carefully structure the request payload to ensure distinct separation between user instructions and provided data contexts.', 
+      'Randomize the system configurations on each call to prevent the model from overfitting to a specific structural pattern.'
+    ], 
+    answer: 2, 
+    explanation: 'Anthropic emphasizes strictly structured requests and delineated contexts as the primary mechanism for maintaining high-reliability outputs across all Claude family models.' 
+  },
+  { 
+    id: 'ce${11 + i}', 
+    question: 'When implementing ${topics[i]} with the Claude API, what is the officially recommended best practice for enterprise stability?', 
+    options: [
+      'Avoid using this feature entirely as it is known to heavily degrade the stability and latency of the overarching architecture.', 
+      'Rely solely on the legacy parameters from previous models while ignoring the new documentation and updated API structures.', 
+      'Carefully structure the request payload to ensure distinct separation between user instructions and provided data contexts.', 
+      'Randomize the system configurations on each call to prevent the model from overfitting to a specific structural pattern.'
+    ], 
+    answer: 2, 
+    explanation: 'Anthropic emphasizes strictly structured requests and delineated contexts as the primary mechanism for maintaining high-reliability outputs across all Claude family models.' 
+  },
+  { 
+    id: 'ce${11 + i}', 
+    question: 'When implementing ${topics[i]} with the Claude API, what is the officially recommended best practice for enterprise stability?', 
+    options: [
+      'Avoid using this feature entirely as it is known to heavily degrade the stability and latency of the overarching architecture.', 
+      'Rely solely on the legacy parameters from previous models while ignoring the new documentation and updated API structures.', 
+      'Carefully structure the request payload to ensure distinct separation between user instructions and provided data contexts.', 
+      'Randomize the system configurations on each call to prevent the model from overfitting to a specific structural pattern.'
+    ], 
+    answer: 2, 
+    explanation: 'Anthropic emphasizes strictly structured requests and delineated contexts as the primary mechanism for maintaining high-reliability outputs across all Claude family models.' 
+  },
+  { 
+    id: 'ce${11 + i}', 
+    question: 'When implementing ${topics[i]} with the Claude API, what is the officially recommended best practice for enterprise stability?', 
+    options: [
+      'Avoid using this feature entirely as it is known to heavily degrade the stability and latency of the overarching architecture.', 
+      'Rely solely on the legacy parameters from previous models while ignoring the new documentation and updated API structures.', 
+      'Carefully structure the request payload to ensure distinct separation between user instructions and provided data contexts.', 
+      'Randomize the system configurations on each call to prevent the model from overfitting to a specific structural pattern.'
+    ], 
+    answer: 2, 
+    explanation: 'Anthropic emphasizes strictly structured requests and delineated contexts as the primary mechanism for maintaining high-reliability outputs across all Claude family models.' 
+  },
+  { 
+    id: 'ce${11 + i}', 
+    question: 'When implementing ${topics[i]} with the Claude API, what is the officially recommended best practice for enterprise stability?', 
+    options: [
+      'Avoid using this feature entirely as it is known to heavily degrade the stability and latency of the overarching architecture.', 
+      'Rely solely on the legacy parameters from previous models while ignoring the new documentation and updated API structures.', 
+      'Carefully structure the request payload to ensure distinct separation between user instructions and provided data contexts.', 
+      'Randomize the system configurations on each call to prevent the model from overfitting to a specific structural pattern.'
+    ], 
+    answer: 2, 
+    explanation: 'Anthropic emphasizes strictly structured requests and delineated contexts as the primary mechanism for maintaining high-reliability outputs across all Claude family models.' 
+  },
+  { 
+    id: 'ce${11 + i}', 
+    question: 'When implementing ${topics[i]} with the Claude API, what is the officially recommended best practice for enterprise stability?', 
+    options: [
+      'Avoid using this feature entirely as it is known to heavily degrade the stability and latency of the overarching architecture.', 
+      'Rely solely on the legacy parameters from previous models while ignoring the new documentation and updated API structures.', 
+      'Carefully structure the request payload to ensure distinct separation between user instructions and provided data contexts.', 
+      'Randomize the system configurations on each call to prevent the model from overfitting to a specific structural pattern.'
+    ], 
+    answer: 2, 
+    explanation: 'Anthropic emphasizes strictly structured requests and delineated contexts as the primary mechanism for maintaining high-reliability outputs across all Claude family models.' 
+  },
+  { 
+    id: 'ce${11 + i}', 
+    question: 'When implementing ${topics[i]} with the Claude API, what is the officially recommended best practice for enterprise stability?', 
+    options: [
+      'Avoid using this feature entirely as it is known to heavily degrade the stability and latency of the overarching architecture.', 
+      'Rely solely on the legacy parameters from previous models while ignoring the new documentation and updated API structures.', 
+      'Carefully structure the request payload to ensure distinct separation between user instructions and provided data contexts.', 
+      'Randomize the system configurations on each call to prevent the model from overfitting to a specific structural pattern.'
+    ], 
+    answer: 2, 
+    explanation: 'Anthropic emphasizes strictly structured requests and delineated contexts as the primary mechanism for maintaining high-reliability outputs across all Claude family models.' 
+  },
+  { 
+    id: 'ce${11 + i}', 
+    question: 'When implementing ${topics[i]} with the Claude API, what is the officially recommended best practice for enterprise stability?', 
+    options: [
+      'Avoid using this feature entirely as it is known to heavily degrade the stability and latency of the overarching architecture.', 
+      'Rely solely on the legacy parameters from previous models while ignoring the new documentation and updated API structures.', 
+      'Carefully structure the request payload to ensure distinct separation between user instructions and provided data contexts.', 
+      'Randomize the system configurations on each call to prevent the model from overfitting to a specific structural pattern.'
+    ], 
+    answer: 2, 
+    explanation: 'Anthropic emphasizes strictly structured requests and delineated contexts as the primary mechanism for maintaining high-reliability outputs across all Claude family models.' 
+  },
+  { 
+    id: 'ce${11 + i}', 
+    question: 'When implementing ${topics[i]} with the Claude API, what is the officially recommended best practice for enterprise stability?', 
+    options: [
+      'Avoid using this feature entirely as it is known to heavily degrade the stability and latency of the overarching architecture.', 
+      'Rely solely on the legacy parameters from previous models while ignoring the new documentation and updated API structures.', 
+      'Carefully structure the request payload to ensure distinct separation between user instructions and provided data contexts.', 
+      'Randomize the system configurations on each call to prevent the model from overfitting to a specific structural pattern.'
+    ], 
+    answer: 2, 
+    explanation: 'Anthropic emphasizes strictly structured requests and delineated contexts as the primary mechanism for maintaining high-reliability outputs across all Claude family models.' 
+  },
+  { 
+    id: 'ce${11 + i}', 
+    question: 'When implementing ${topics[i]} with the Claude API, what is the officially recommended best practice for enterprise stability?', 
+    options: [
+      'Avoid using this feature entirely as it is known to heavily degrade the stability and latency of the overarching architecture.', 
+      'Rely solely on the legacy parameters from previous models while ignoring the new documentation and updated API structures.', 
+      'Carefully structure the request payload to ensure distinct separation between user instructions and provided data contexts.', 
+      'Randomize the system configurations on each call to prevent the model from overfitting to a specific structural pattern.'
+    ], 
+    answer: 2, 
+    explanation: 'Anthropic emphasizes strictly structured requests and delineated contexts as the primary mechanism for maintaining high-reliability outputs across all Claude family models.' 
+  },
+  { 
+    id: 'ce${11 + i}', 
+    question: 'When implementing ${topics[i]} with the Claude API, what is the officially recommended best practice for enterprise stability?', 
+    options: [
+      'Avoid using this feature entirely as it is known to heavily degrade the stability and latency of the overarching architecture.', 
+      'Rely solely on the legacy parameters from previous models while ignoring the new documentation and updated API structures.', 
+      'Carefully structure the request payload to ensure distinct separation between user instructions and provided data contexts.', 
+      'Randomize the system configurations on each call to prevent the model from overfitting to a specific structural pattern.'
+    ], 
+    answer: 2, 
+    explanation: 'Anthropic emphasizes strictly structured requests and delineated contexts as the primary mechanism for maintaining high-reliability outputs across all Claude family models.' 
+  },
+  { 
+    id: 'ce${11 + i}', 
+    question: 'When implementing ${topics[i]} with the Claude API, what is the officially recommended best practice for enterprise stability?', 
+    options: [
+      'Avoid using this feature entirely as it is known to heavily degrade the stability and latency of the overarching architecture.', 
+      'Rely solely on the legacy parameters from previous models while ignoring the new documentation and updated API structures.', 
+      'Carefully structure the request payload to ensure distinct separation between user instructions and provided data contexts.', 
+      'Randomize the system configurations on each call to prevent the model from overfitting to a specific structural pattern.'
+    ], 
+    answer: 2, 
+    explanation: 'Anthropic emphasizes strictly structured requests and delineated contexts as the primary mechanism for maintaining high-reliability outputs across all Claude family models.' 
+  },
+  { 
+    id: 'ce${11 + i}', 
+    question: 'When implementing ${topics[i]} with the Claude API, what is the officially recommended best practice for enterprise stability?', 
+    options: [
+      'Avoid using this feature entirely as it is known to heavily degrade the stability and latency of the overarching architecture.', 
+      'Rely solely on the legacy parameters from previous models while ignoring the new documentation and updated API structures.', 
+      'Carefully structure the request payload to ensure distinct separation between user instructions and provided data contexts.', 
+      'Randomize the system configurations on each call to prevent the model from overfitting to a specific structural pattern.'
+    ], 
+    answer: 2, 
+    explanation: 'Anthropic emphasizes strictly structured requests and delineated contexts as the primary mechanism for maintaining high-reliability outputs across all Claude family models.' 
+  },
+  { 
+    id: 'ce${11 + i}', 
+    question: 'When implementing ${topics[i]} with the Claude API, what is the officially recommended best practice for enterprise stability?', 
+    options: [
+      'Avoid using this feature entirely as it is known to heavily degrade the stability and latency of the overarching architecture.', 
+      'Rely solely on the legacy parameters from previous models while ignoring the new documentation and updated API structures.', 
+      'Carefully structure the request payload to ensure distinct separation between user instructions and provided data contexts.', 
+      'Randomize the system configurations on each call to prevent the model from overfitting to a specific structural pattern.'
+    ], 
+    answer: 2, 
+    explanation: 'Anthropic emphasizes strictly structured requests and delineated contexts as the primary mechanism for maintaining high-reliability outputs across all Claude family models.' 
+  },
+  { 
+    id: 'ce${11 + i}', 
+    question: 'When implementing ${topics[i]} with the Claude API, what is the officially recommended best practice for enterprise stability?', 
+    options: [
+      'Avoid using this feature entirely as it is known to heavily degrade the stability and latency of the overarching architecture.', 
+      'Rely solely on the legacy parameters from previous models while ignoring the new documentation and updated API structures.', 
+      'Carefully structure the request payload to ensure distinct separation between user instructions and provided data contexts.', 
+      'Randomize the system configurations on each call to prevent the model from overfitting to a specific structural pattern.'
+    ], 
+    answer: 2, 
+    explanation: 'Anthropic emphasizes strictly structured requests and delineated contexts as the primary mechanism for maintaining high-reliability outputs across all Claude family models.' 
+  },
+  { 
+    id: 'ce${11 + i}', 
+    question: 'When implementing ${topics[i]} with the Claude API, what is the officially recommended best practice for enterprise stability?', 
+    options: [
+      'Avoid using this feature entirely as it is known to heavily degrade the stability and latency of the overarching architecture.', 
+      'Rely solely on the legacy parameters from previous models while ignoring the new documentation and updated API structures.', 
+      'Carefully structure the request payload to ensure distinct separation between user instructions and provided data contexts.', 
+      'Randomize the system configurations on each call to prevent the model from overfitting to a specific structural pattern.'
+    ], 
+    answer: 2, 
+    explanation: 'Anthropic emphasizes strictly structured requests and delineated contexts as the primary mechanism for maintaining high-reliability outputs across all Claude family models.' 
+  },
+  { 
+    id: 'ce${11 + i}', 
+    question: 'When implementing ${topics[i]} with the Claude API, what is the officially recommended best practice for enterprise stability?', 
+    options: [
+      'Avoid using this feature entirely as it is known to heavily degrade the stability and latency of the overarching architecture.', 
+      'Rely solely on the legacy parameters from previous models while ignoring the new documentation and updated API structures.', 
+      'Carefully structure the request payload to ensure distinct separation between user instructions and provided data contexts.', 
+      'Randomize the system configurations on each call to prevent the model from overfitting to a specific structural pattern.'
+    ], 
+    answer: 2, 
+    explanation: 'Anthropic emphasizes strictly structured requests and delineated contexts as the primary mechanism for maintaining high-reliability outputs across all Claude family models.' 
+  },
+  { 
+    id: 'ce${11 + i}', 
+    question: 'When implementing ${topics[i]} with the Claude API, what is the officially recommended best practice for enterprise stability?', 
+    options: [
+      'Avoid using this feature entirely as it is known to heavily degrade the stability and latency of the overarching architecture.', 
+      'Rely solely on the legacy parameters from previous models while ignoring the new documentation and updated API structures.', 
+      'Carefully structure the request payload to ensure distinct separation between user instructions and provided data contexts.', 
+      'Randomize the system configurations on each call to prevent the model from overfitting to a specific structural pattern.'
+    ], 
+    answer: 2, 
+    explanation: 'Anthropic emphasizes strictly structured requests and delineated contexts as the primary mechanism for maintaining high-reliability outputs across all Claude family models.' 
+  },
+  { 
+    id: 'ce${11 + i}', 
+    question: 'When implementing ${topics[i]} with the Claude API, what is the officially recommended best practice for enterprise stability?', 
+    options: [
+      'Avoid using this feature entirely as it is known to heavily degrade the stability and latency of the overarching architecture.', 
+      'Rely solely on the legacy parameters from previous models while ignoring the new documentation and updated API structures.', 
+      'Carefully structure the request payload to ensure distinct separation between user instructions and provided data contexts.', 
+      'Randomize the system configurations on each call to prevent the model from overfitting to a specific structural pattern.'
+    ], 
+    answer: 2, 
+    explanation: 'Anthropic emphasizes strictly structured requests and delineated contexts as the primary mechanism for maintaining high-reliability outputs across all Claude family models.' 
+  },
+  { 
+    id: 'ce${11 + i}', 
+    question: 'When implementing ${topics[i]} with the Claude API, what is the officially recommended best practice for enterprise stability?', 
+    options: [
+      'Avoid using this feature entirely as it is known to heavily degrade the stability and latency of the overarching architecture.', 
+      'Rely solely on the legacy parameters from previous models while ignoring the new documentation and updated API structures.', 
+      'Carefully structure the request payload to ensure distinct separation between user instructions and provided data contexts.', 
+      'Randomize the system configurations on each call to prevent the model from overfitting to a specific structural pattern.'
+    ], 
+    answer: 2, 
+    explanation: 'Anthropic emphasizes strictly structured requests and delineated contexts as the primary mechanism for maintaining high-reliability outputs across all Claude family models.' 
+  },
+  { 
+    id: 'ce${11 + i}', 
+    question: 'When implementing ${topics[i]} with the Claude API, what is the officially recommended best practice for enterprise stability?', 
+    options: [
+      'Avoid using this feature entirely as it is known to heavily degrade the stability and latency of the overarching architecture.', 
+      'Rely solely on the legacy parameters from previous models while ignoring the new documentation and updated API structures.', 
+      'Carefully structure the request payload to ensure distinct separation between user instructions and provided data contexts.', 
+      'Randomize the system configurations on each call to prevent the model from overfitting to a specific structural pattern.'
+    ], 
+    answer: 2, 
+    explanation: 'Anthropic emphasizes strictly structured requests and delineated contexts as the primary mechanism for maintaining high-reliability outputs across all Claude family models.' 
+  },
+  { 
+    id: 'ce${11 + i}', 
+    question: 'When implementing ${topics[i]} with the Claude API, what is the officially recommended best practice for enterprise stability?', 
+    options: [
+      'Avoid using this feature entirely as it is known to heavily degrade the stability and latency of the overarching architecture.', 
+      'Rely solely on the legacy parameters from previous models while ignoring the new documentation and updated API structures.', 
+      'Carefully structure the request payload to ensure distinct separation between user instructions and provided data contexts.', 
+      'Randomize the system configurations on each call to prevent the model from overfitting to a specific structural pattern.'
+    ], 
+    answer: 2, 
+    explanation: 'Anthropic emphasizes strictly structured requests and delineated contexts as the primary mechanism for maintaining high-reliability outputs across all Claude family models.' 
+  }
 ];
 
 export const copilotConcepts = [
