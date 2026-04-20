@@ -55,6 +55,29 @@ export default function ClaudeArchitect({ progress, updateProgress }: { progress
         <p className="text-sm leading-relaxed text-indigo-200/80 mb-5 max-w-2xl">
           While Anthropic does not currently offer an official certification natively, this track prepares you for the advanced architectural patterns required to orchestrate Claude 3 in enterprise environments. It covers Constitutional AI, token-optimized prompting via XML, and complex tool-use (MCP).
         </p>
+
+        {(() => {
+          const coursesRatio = claudeCourses.length ? progress.completedCourses.length / claudeCourses.length : 0;
+          const conceptsRatio = claudeConcepts.length ? progress.readConcepts.length / claudeConcepts.length : 0;
+          const readinessPercentage = Math.round(15 + 85 * ((coursesRatio * 0.6) + (conceptsRatio * 0.4)));
+          
+          return (
+            <div className="mb-6 bg-indigo-900/40 border border-indigo-700/50 p-4 rounded-xl flex items-center justify-between">
+               <div>
+                 <h4 className="text-sm font-bold text-indigo-100">Estimated Passing Probability</h4>
+                 <p className="text-xs text-indigo-300/80 mt-1">Based on your completion of the recommended curriculum</p>
+               </div>
+               <div className="flex items-center gap-3">
+                 <div className="text-right">
+                    <span className={`text-2xl font-bold ${readinessPercentage > 80 ? 'text-emerald-400' : readinessPercentage > 50 ? 'text-amber-400' : 'text-rose-400'}`}>
+                      {readinessPercentage}%
+                    </span>
+                 </div>
+               </div>
+            </div>
+          );
+        })()}
+
         <div className="flex flex-wrap gap-4">
           <a href="https://docs.anthropic.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-indigo-900/80 hover:bg-indigo-800 border border-indigo-700/50 px-4 py-2 rounded text-xs transition-colors text-indigo-100 font-medium">
             Official Claude Docs <ExternalLink className="w-3 h-3" />

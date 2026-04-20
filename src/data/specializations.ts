@@ -10,7 +10,7 @@ export const claudeConcepts = [
 ];
 
 export const claudeCourses = [
-  { id: 'cl_crs1', title: 'Anthropic Prompt Engineering Interactive Tutorial', url: 'https://docs.anthropic.com/claude/docs/interactive-tutorial', description: 'Hands-on interactive tutorial to master Claude specific techniques.' },
+  { id: 'cl_crs1', title: 'Anthropic Prompt Engineering Interactive Tutorial', url: 'https://github.com/anthropics/courses/tree/master/Prompt_Engineering_Interactive_Tutorial', description: 'Hands-on interactive tutorial to master Claude specific techniques.' },
   { id: 'cl_crs2', title: 'Mastering Claude Tool Use', url: 'https://docs.anthropic.com/claude/docs/tool-use', description: 'Deep dive into connecting Claude to external APIs.' },
   { id: 'cl_crs3', title: 'Constitutional AI Paper', url: 'https://arxiv.org/abs/2212.08073', description: 'The foundational research paper describing how Claude is trained and aligned.' },
   { id: 'cl_crs4', title: 'Computer Use Reference Architecture', url: 'https://docs.anthropic.com/en/docs/build-with-claude/computer-use', description: 'How to deploy Claude inside an isolated container to let it use a virtual mouse and keyboard.' },
